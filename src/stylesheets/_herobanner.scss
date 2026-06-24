@@ -3,66 +3,91 @@
 
 @if $UIRefresh2022 {
   .hero-banner {
-    height: 240px;
+    height: 480px;
     background-color: #0c1a24;
-    background-image: linear-gradient(to right, rgba(12, 26, 36, 0.75) 0%, rgba(12, 26, 36, 0.4) 60%, rgba(12, 26, 36, 0.1) 100%),
+    background-image:
+      linear-gradient(to right, rgba(12, 26, 36, 0.92) 0%, rgba(12, 26, 36, 0.85) 30%, rgba(12, 26, 36, 0.4) 60%, rgba(12, 26, 36, 0) 80%),
       url('/images/abstract-bg.jpg');
     background-size: cover;
+    background-position: center right;
     background-repeat: no-repeat;
-    background-position: center;
     color: $white;
     display: flex;
     align-items: center;
     margin: 0 !important;
 
     @include media-query-xlarge {
-      height: 200px;
+      height: 440px;
     }
 
     &__wrapper {
-      margin: auto;
-      width: 90%;
+      width: 100%;
+      max-width: 1008px;
+      margin: 0 auto;
+      padding: 0 5%;
 
-      @include layout-margin(1, $screen-small);
-      @include layout-margin(1, $screen-medium);
-      @include layout-margin(1, $screen-large);
-      @include layout-margin(1, $screen-xlarge);
-      @include layout-margin(1, $screen-xxlarge);
-      @include layout-margin(1, $screen-xxxlarge);
+      @include media-query-large {
+        padding: 0 calc((100% - 1440px) / 2 + 5%);
+        padding: 0 max(5%, calc((100% - 1440px) / 2));
+      }
+    }
+
+    &__volume {
+      font-size: 1rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.85);
+      margin: 0 0 1.25rem 0;
+      letter-spacing: 0;
+      text-transform: none;
     }
 
     &__title-text {
-      width: 100%;
-      text-align: center;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0 0 1.25rem 0;
       text-transform: none;
-      letter-spacing: 0;
-      cursor: pointer;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      cursor: default;
+      width: auto;
+      text-align: left;
+
+      @include media-query-xlarge {
+        font-size: 3.5rem;
+      }
     }
 
     &__subtitle-text {
-      font-weight: 630;
-      width: 50%;
-      text-align: left;
-      text-transform: none;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+      margin: 0 0 2.5rem 0;
       letter-spacing: 0;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      line-height: 1.75rem;
-      -webkit-line-clamp: 4;
-      -webkit-box-orient: vertical;
+      text-transform: none;
+      width: auto;
+      text-align: left;
+      overflow: visible;
+      display: block;
+      -webkit-line-clamp: unset;
+      line-clamp: unset;
+    }
 
-      @include media-query-medium {
-        width: 37.5%;
-        -webkit-line-clamp: 2;
-      }
+    &__button {
+      display: inline-block;
+      background-color: #b32840;
+      color: #ffffff;
+      padding: 1rem 2.25rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
 
-      @include media-query-large {
-        width: 25%;
-      }
-
-      @include media-query-xlarge {
-        width: 33%;
+      &:hover {
+        background-color: #8f1f30;
+        color: #ffffff;
+        text-decoration: none;
       }
     }
   }
