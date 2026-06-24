@@ -786,6 +786,12 @@ const Radar = function (size, radar) {
     if (featureToggles.UIRefresh2022) {
       renderQuadrantSubnav(radarHeader, quadrants, renderFullRadar)
       // if (featureToggles.normalizeRingNameHoldToCaution) addDisclaimerText(radarHeader)
+      radarHeader
+        .append('p')
+        .attr('class', 'radar-intro')
+        .text(
+          'Youwe Technology Radar is a twice-yearly snapshot of tools, techniques, platforms, languages and frameworks. This knowledge-sharing tool is based on our global teams’ experience and highlights things you may want to explore on your projects.',
+        )
       renderSearch(radarHeader, quadrants)
       // renderAlternativeRadars(radarFooter, alternatives, currentSheet)
       renderQuadrantTables(quadrants, rings)
