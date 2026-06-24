@@ -1,5 +1,6 @@
 const CONFLUENCE_BASE_URL = process.env.CONFLUENCE_BASE_URL
 const CONFLUENCE_PAGE_ID = process.env.CONFLUENCE_PAGE_ID
+const CONFLUENCE_PAGE_URL = `${CONFLUENCE_BASE_URL}/spaces/SER/pages/${CONFLUENCE_PAGE_ID}`
 
 function showToast(message, type) {
   const existing = document.getElementById('radar-toast')
@@ -8,7 +9,7 @@ function showToast(message, type) {
   const toast = document.createElement('div')
   toast.id = 'radar-toast'
   toast.className = `radar-toast radar-toast--${type}`
-  toast.textContent = message
+  toast.innerHTML = message
   document.body.appendChild(toast)
 
   requestAnimationFrame(() => toast.classList.add('radar-toast--visible'))
@@ -16,17 +17,7 @@ function showToast(message, type) {
   setTimeout(() => {
     toast.classList.remove('radar-toast--visible')
     toast.addEventListener('transitionend', () => toast.remove(), { once: true })
-  }, 5000)
-}
-
-function openWatchPopup() {
-  const watchUrl = `${CONFLUENCE_BASE_URL}/pages/dowatch.action?pageId=${CONFLUENCE_PAGE_ID}&target=page`
-  const popup = window.open(watchUrl, 'confluence-watch', 'width=700,height=500,resizable=yes')
-  if (popup) {
-    showToast('A Confluence window opened — you are now subscribed to updates.', 'success')
-  } else {
-    showToast('Could not open Confluence. Please allow popups for this site.', 'error')
-  }
+  }, 7000)
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -55,12 +46,17 @@ document.addEventListener('DOMContentLoaded', function () {
       } else {
         btn.textContent = 'Keep me posted'
         btn.disabled = false
-        showToast(`Subscription failed (${res.status}). Make sure you are logged in to Confluence.`, 'error')
+        showToast(`Could not subscribe (${res.status}). Make sure you are logged in to Confluence.`, 'error')
       }
     } catch (_corsErr) {
-      // CORS blocks cross-origin fetch — fall back to Confluence's native watch action
-      btn.textContent = "You're watching!"
-      openWatchPopup()
+      // CORS blocks direct API calls — open the Confluence page so the user can watch it there
+      btn.textContent = 'Keep me posted'
+      btn.disabled = false
+      window.open(CONFLUENCE_PAGE_URL, '_blank')
+      showToast(
+        'Opened Confluence in a new tab — click the <strong>Watch</strong> button (🔔) at the top of the page to subscribe to updates.',
+        'info',
+      )
     }
   })
 })
