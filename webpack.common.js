@@ -31,6 +31,8 @@ const plugins = [
     'process.env.QUADRANTS': JSON.stringify(process.env.QUADRANTS),
     'process.env.ADOBE_LAUNCH_SCRIPT_URL': JSON.stringify(process.env.ADOBE_LAUNCH_SCRIPT_URL),
     'process.env.SHEET_ID': JSON.stringify(process.env.SHEET_ID),
+    'process.env.CONFLUENCE_BASE_URL': JSON.stringify(process.env.CONFLUENCE_BASE_URL),
+    'process.env.CONFLUENCE_PAGE_ID': JSON.stringify(process.env.CONFLUENCE_PAGE_ID),
   }),
 ]
 

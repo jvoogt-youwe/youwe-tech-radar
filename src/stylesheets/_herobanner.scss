@@ -81,15 +81,21 @@
       padding: 1rem 2.25rem;
       font-size: 1.1rem;
       font-weight: 600;
+      font-family: $baseFontFamily;
       text-decoration: none;
       border: none;
       border-radius: 4px;
       cursor: pointer;
+      line-height: 1;
 
-      &:hover {
+      &:hover:not(:disabled) {
         background-color: #b80038;
         color: #ffffff;
-        text-decoration: none;
+      }
+
+      &:disabled {
+        opacity: 0.75;
+        cursor: default;
       }
     }
   }
