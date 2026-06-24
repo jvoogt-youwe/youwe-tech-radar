@@ -13,6 +13,41 @@
     padding: 0 5%;
   }
 
+  .radar-footer-description {
+    max-width: 800px;
+    margin: 40px 0 2rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #444444;
+    padding: 0 5%;
+    font-family: $baseFontFamily;
+
+    p,
+    li,
+    strong,
+    span {
+      font-size: 1rem !important;
+      line-height: 1.6;
+      color: #444444;
+      font-family: $baseFontFamily;
+    }
+
+    p {
+      margin: 0 0 0.75rem 0;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 1.5rem;
+      list-style: disc;
+
+      li {
+        padding-left: 0;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+
   .graph-header {
     display: flex;
     flex-direction: column;

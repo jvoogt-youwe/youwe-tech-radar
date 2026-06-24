@@ -779,7 +779,7 @@ const Radar = function (size, radar) {
     currentSheet = radar.getCurrentSheet()
 
     const radarHeader = d3.select('main .graph-header')
-    // const radarFooter = d3.select('main .graph-footer')
+    const radarFooter = d3.select('main .graph-footer')
 
     renderBanner(renderFullRadar)
 
@@ -793,9 +793,33 @@ const Radar = function (size, radar) {
           'Youwe Technology Radar is a twice-yearly snapshot of tools, techniques, platforms, languages and frameworks. This knowledge-sharing tool is based on our global teams’ experience and highlights things you may want to explore on your projects.',
         )
       renderSearch(radarHeader, quadrants)
-      // renderAlternativeRadars(radarFooter, alternatives, currentSheet)
       renderQuadrantTables(quadrants, rings)
-      // renderButtons(radarFooter)
+
+      const radarFooterDesc = radarFooter.append('div').attr('class', 'radar-footer-description')
+      radarFooterDesc
+        .append('p')
+        .text(
+          'Each insight we share is represented by a blip. Blips may be new to the latest Radar volume, or they can move rings as our recommendation has changed.',
+        )
+      radarFooterDesc.append('p').text('The rings are:')
+      const ringList = radarFooterDesc.append('ul')
+      const ringItems = [
+        ['Adopt', 'Blips that we think you should seriously consider using.'],
+        ['Trial', 'Things we think are ready for use, but not as completely proven as those in the Adopt ring.'],
+        [
+          'Assess',
+          'Things to look at closely, but not necessarily trial yet — unless you think they would be a particularly good fit for you.',
+        ],
+        [
+          'Caution',
+          "The industry should consider alternative options or even proactively avoid these things. We've had negative experiences that have impacted our work.",
+        ],
+      ]
+      ringItems.forEach(([name, desc]) => {
+        const li = ringList.append('li')
+        li.append('strong').text(name)
+        li.append('span').text(`. ${desc}`)
+      })
 
       const landingPageElements = document.querySelectorAll('main .home-page')
       landingPageElements.forEach((elem) => {
