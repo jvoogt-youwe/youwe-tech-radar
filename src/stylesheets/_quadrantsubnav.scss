@@ -87,7 +87,6 @@
         font-size: 16px;
 
         @include media-query-xlarge {
-          max-width: 20% !important;
           &.active-item {
             padding-top: 4px;
             border-bottom: 4px solid transparent;
@@ -125,8 +124,10 @@
           background-color: $white;
 
           @include media-query-xlarge {
-            padding: 15px 40px;
-            margin: 0 1px;
+            width: 100%;
+            padding: 15px 0;
+            margin: 0;
+            text-align: center;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -140,17 +141,20 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        margin: 0;
+        margin: 0 auto;
         padding: 0;
+        max-width: 1152px;
+        width: 100%;
 
         &.show {
           flex-direction: row;
         }
 
         &-item {
-          width: unset;
+          flex: 1;
           min-height: unset;
           border: none;
+          justify-content: center;
 
           &:not(.active-item):hover {
             color: $flamingo-s40;
