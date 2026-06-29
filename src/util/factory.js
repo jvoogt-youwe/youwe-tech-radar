@@ -395,7 +395,7 @@ function plotLoading(content) {
     plotLogo(content)
 
     var bannerText =
-      '<h1>Building your radar...</h1><p>Your Technology Radar will be available in just a few seconds</p>'
+      '<h1>Building Youwe radar...</h1><p>Youwe Technology Radar will be available in just a few seconds</p>'
     plotBanner(content, bannerText)
     plotFooter(content)
   } else {
