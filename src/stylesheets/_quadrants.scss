@@ -270,11 +270,11 @@
     @if $UIRefresh2022 {
       overflow: clip;
       &.first {
-        float: left;
+        float: right;
       }
 
       &.second {
-        float: left;
+        float: right;
       }
 
       &.third {

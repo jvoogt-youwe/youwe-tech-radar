@@ -90,6 +90,10 @@ function renderBlipDescription(blip, ring, quadrant, tip, groupBlipTooltipText) 
 
         const toggleMeta = () => {
           const expanded = metaBadges.classed('visible')
+          if (!expanded) {
+            d3.selectAll('.blip-meta-badges.visible').classed('visible', false)
+            d3.selectAll('.blip-show-toggle').text('Show more')
+          }
           metaBadges.classed('visible', !expanded)
           toggle.text(expanded ? 'Show more' : 'Show less')
           if (window.innerWidth >= uiConfig.tabletViewWidth) {
