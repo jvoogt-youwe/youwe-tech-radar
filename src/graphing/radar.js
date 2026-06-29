@@ -789,6 +789,8 @@ const Radar = function (size, radar) {
       renderSearch(d3.select('.hero-banner__search'), quadrants)
       renderQuadrantTables(quadrants, rings)
 
+      radarFooter.selectAll('*').remove()
+
       radarFooter
         .append('p')
         .attr('class', 'radar-intro')
@@ -821,6 +823,12 @@ const Radar = function (size, radar) {
         li.append('strong').text(name)
         li.append('span').text(`. ${desc}`)
       })
+
+      radarFooter
+        .append('button')
+        .attr('class', 'hero-banner__button radar-footer-cta')
+        .attr('id', 'keep-me-posted-btn')
+        .text('Keep me posted')
 
       const landingPageElements = document.querySelectorAll('main .home-page')
       landingPageElements.forEach((elem) => {
