@@ -543,6 +543,8 @@ function plotError(exception, fileType) {
 
 function showErrorMessage(exception, fileType) {
   document.querySelector('.helper-description .loader-text').style.display = 'none'
+  const loader = document.getElementById('youwe-loader')
+  if (loader) loader.style.display = 'none'
   plotError(exception, fileType)
 }
 
