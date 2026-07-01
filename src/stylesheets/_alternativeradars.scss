@@ -8,12 +8,16 @@
     width: 100%;
     max-width: 1040px;
     margin: 0 auto;
-    padding-top: 80px;
+    padding-top: 32px;
     align-items: flex-start;
     padding-left: 5%;
     padding-right: 5%;
     box-sizing: border-box;
     clear: both;
+
+    @include media-query-xlarge {
+      padding-top: 80px;
+    }
   }
 
   .alternative-radars {

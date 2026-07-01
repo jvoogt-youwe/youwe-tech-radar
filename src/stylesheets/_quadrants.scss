@@ -62,17 +62,27 @@
     right: 0;
 
     @if $UIRefresh2022 {
-      display: none;
+      display: block;
       transition: none;
 
       margin: 0 auto;
 
-      &.enable-transition {
-        transition: all 1s ease;
-      }
+      max-width: 100%;
+      height: auto !important;
+      position: relative;
+      left: auto;
+      right: auto;
 
       @include media-query-medium {
-        display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        max-width: unset;
+        height: unset !important;
+      }
+
+      &.enable-transition {
+        transition: all 1s ease;
       }
     }
 
@@ -418,22 +428,16 @@
 
   .all-quadrants-mobile {
     --quadrant-gap: 12px;
-    --quadrant-btn-width-mobile: 150px;
-    --quadrant-btn-height-mobile: 70px;
     display: none;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-content: space-between;
-    margin: auto;
-    margin-bottom: 42px;
+    gap: var(--quadrant-gap);
+    margin: 48px auto 42px;
+    width: calc(100% - 2rem);
+    max-width: 720px;
 
     &.show-all-quadrants-mobile {
       display: flex;
-    }
-    @include media-query-medium {
-      --quadrant-btn-width-mobile: 345px;
-      --quadrant-btn-height-mobile: 160px;
     }
     @include media-query-xlarge {
       display: none;
@@ -442,17 +446,18 @@
       }
     }
 
-    width: calc(var(--quadrant-btn-width-mobile) * 2 + var(--quadrant-gap));
-    height: calc(var(--quadrant-btn-height-mobile) * 2 + var(--quadrant-gap));
-
     .all-quadrants-mobile--btn {
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
-      margin: 3px;
-      width: var(--quadrant-btn-width-mobile);
-      height: var(--quadrant-btn-height-mobile);
+      margin: 0;
+      width: calc(50% - var(--quadrant-gap) / 2);
+      height: 120px;
+
+      @include media-query-medium {
+        height: 160px;
+      }
       background-size: 100%;
       background-repeat: no-repeat;
       font-size: 16px;
